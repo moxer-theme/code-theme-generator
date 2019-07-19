@@ -4,6 +4,7 @@ export interface IVscodeJsonThemeSetting {
     scope: string | string[];
     settings: {
         foreground?: string;
+        background?: string;
         fontStyle?: string;
     };
 }
