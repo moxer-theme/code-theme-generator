@@ -1,6 +1,6 @@
 {
   "name": "@moxer/vscode-theme-generator",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Easily generate themes for VS Code",
   "main": "dist/index.js",
   "scripts": {
