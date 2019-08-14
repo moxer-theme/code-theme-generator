@@ -346,9 +346,9 @@ var VscodeThemeGenerator = /** @class */ (function () {
                 theme.colors[key] = colorSet.overrides[key];
             });
         }
-        // if (colorSet.syntaxOverrides) {
-        //   theme.tokenColors = colorSet.syntaxOverrides;
-        // }
+        if (colorSet.syntaxOverrides) {
+            theme.tokenColors = colorSet.syntaxOverrides;
+        }
     };
     return VscodeThemeGenerator;
 }());
