@@ -80,15 +80,5 @@ export interface IColorSet {
     brightWhite?: string;
   };
   overrides?: { [key: string]: string };
-  syntaxOverrides?: [
-    {
-      name: string;
-      scope: string | string[];
-      settings: {
-        foreground?: string;
-        background?: string;
-        fontStyle?: string;
-      };
-    }
-  ];
+  syntaxOverrides?: IVscodeJsonThemeSetting[];
 }
