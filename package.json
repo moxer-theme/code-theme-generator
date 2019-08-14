@@ -1,7 +1,7 @@
 {
-  "name": "vscode-theme-generator",
-  "version": "0.1.6",
-  "description": "Easily generate themes for VS Code with only a few colors",
+  "name": "@moxer/vscode-theme-generator",
+  "version": "1.0.0",
+  "description": "Easily generate themes for VS Code",
   "main": "dist/index.js",
   "scripts": {
     "watch": "tsc -w",
@@ -11,7 +11,7 @@
     "prepublish": "npm run build",
     "lint": "tslint src/*.ts"
   },
-  "author": "Tyriar",
+  "author": "Mattia Astorino",
   "license": "MIT",
   "typescript": {
     "definition": "index.d.ts"
