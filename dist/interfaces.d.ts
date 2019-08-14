@@ -1,4 +1,4 @@
-import { IVscodeJsonThemeSetting } from "./rules";
+import { IVscodeJsonThemeSetting } from './rules';
 export interface IThemeGenerator {
     generateTheme(name: string, colorSet: IColorSet): string;
 }
@@ -13,7 +13,7 @@ export interface IBaseColorSet {
     color4: string;
 }
 export interface IColorSet {
-    type?: "light" | "dark";
+    type?: 'light' | 'dark';
     base: IBaseColorSet;
     syntax?: {
         boolean?: string;
@@ -74,8 +74,8 @@ export interface IColorSet {
         brightCyan?: string;
         brightWhite?: string;
     };
-    overrides?: {
+    workbench?: {
         [key: string]: string;
     };
-    syntaxOverrides?: IVscodeJsonThemeSetting[];
+    customTokens?: IVscodeJsonThemeSetting[];
 }

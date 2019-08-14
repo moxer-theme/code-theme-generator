@@ -79,6 +79,6 @@ export interface IColorSet {
 		brightCyan?: string;
 		brightWhite?: string;
 	};
-	overrides?: { [key: string]: string };
-	syntaxOverrides?: IVscodeJsonThemeSetting[];
+	workbench?: { [key: string]: string };
+	customTokens?: IVscodeJsonThemeSetting[];
 }

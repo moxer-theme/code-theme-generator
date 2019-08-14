@@ -341,15 +341,17 @@ export class VscodeThemeGenerator implements IThemeGenerator {
 
 		theme.colors['selection.background'] = colorSet.base.color1;
 
-		if (colorSet.overrides) {
-			const keys = Object.keys(colorSet.overrides);
+		if (colorSet.workbench) {
+			const keys = Object.keys(colorSet.workbench);
 			keys.forEach((key) => {
-				theme.colors[key] = colorSet.overrides[key];
+				theme.colors[key] = colorSet.workbench[key];
 			});
 		}
 
-		if (colorSet.syntaxOverrides) {
-			theme.tokenColors = colorSet.syntaxOverrides;
+		if (colorSet.customTokens) {
+			colorSet.customTokens.forEach((ruleset) => {
+				theme.tokenColors.push(ruleset);
+			});
 		}
 	}
 }
