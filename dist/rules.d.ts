@@ -1,4 +1,4 @@
-import { IColorSet } from "./interfaces";
+import { IColorSet } from './interfaces';
 export interface IVscodeJsonThemeSetting {
     name: string;
     scope: string | string[];
