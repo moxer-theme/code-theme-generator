@@ -22,16 +22,16 @@ function getSimpleColorGenerator(name, scope, fontStyle) {
         };
         var fontStyles = [];
         if (fontStyle & 1 /* ITALIC */) {
-            fontStyles.push("italic");
+            fontStyles.push('italic');
         }
         if (fontStyle & 2 /* BOLD */) {
-            fontStyles.push("bold");
+            fontStyles.push('bold');
         }
         if (fontStyle & 4 /* UNDERLINE */) {
-            fontStyles.push("underline");
+            fontStyles.push('underline');
         }
         if (fontStyles.length > 0) {
-            colorRule.settings.fontStyle = fontStyles.join(" ");
+            colorRule.settings.fontStyle = fontStyles.join(' ');
         }
         return colorRule;
     };
@@ -39,11 +39,11 @@ function getSimpleColorGenerator(name, scope, fontStyle) {
 exports.globalRules = [
     {
         color: function (s) { return s.base.background; },
-        generate: getGlobalSettingGenerator("background")
+        generate: getGlobalSettingGenerator('background')
     },
     {
         color: function (s) { return s.base.foreground; },
-        generate: getGlobalSettingGenerator("foreground")
+        generate: getGlobalSettingGenerator('foreground')
     }
 ];
 exports.tokenRules = [
@@ -51,216 +51,216 @@ exports.tokenRules = [
     // within template expressions
     {
         color: function (s) { return s.syntax.string; },
-        generate: getSimpleColorGenerator("String", "string")
+        generate: getSimpleColorGenerator('String', 'string')
     },
     {
         color: function (s) { return s.syntax.stringEscape; },
-        generate: getSimpleColorGenerator("String Escape", "constant.character.escape, text.html constant.character.entity.named, punctuation.definition.entity.html")
+        generate: getSimpleColorGenerator('String Escape', 'constant.character.escape, text.html constant.character.entity.named, punctuation.definition.entity.html')
     },
     {
         color: function (s) { return s.syntax.boolean; },
-        generate: getSimpleColorGenerator("Boolean", "constant.language.boolean")
+        generate: getSimpleColorGenerator('Boolean', 'constant.language.boolean')
     },
     {
         color: function (s) { return s.syntax.number; },
-        generate: getSimpleColorGenerator("Number", "constant.numeric")
+        generate: getSimpleColorGenerator('Number', 'constant.numeric')
     },
     {
         color: function (s) { return s.syntax.identifier; },
-        generate: getSimpleColorGenerator("Identifier", "variable, support.variable, support.class, support.constant, meta.definition.variable entity.name.function")
+        generate: getSimpleColorGenerator('Identifier', 'variable, support.variable, support.class, support.constant, meta.definition.variable entity.name.function')
     },
     // support.type.object: module.exports (ts)
     {
         color: function (s) { return s.syntax.keyword; },
-        generate: getSimpleColorGenerator("Keyword", "keyword, modifier, variable.language.this, support.type.object, constant.language")
+        generate: getSimpleColorGenerator('Keyword', 'keyword, modifier, variable.language.this, support.type.object, constant.language')
     },
     // support.function: eg. join in path.join in TypeScript
     {
         color: function (s) { return s.syntax.functionCall; },
-        generate: getSimpleColorGenerator("Function call", "entity.name.function, support.function")
+        generate: getSimpleColorGenerator('Function call', 'entity.name.function, support.function')
     },
     // storage.type: var (ts)
     // storage.modifier: private (ts)
     {
         color: function (s) { return s.syntax.storage; },
-        generate: getSimpleColorGenerator("Storage", "storage.type, storage.modifier")
+        generate: getSimpleColorGenerator('Storage', 'storage.type, storage.modifier')
     },
     // module.support: imported modules in TypeScript
     {
         color: function (s) { return s.syntax.identifier; },
-        generate: getSimpleColorGenerator("Modules", "support.module, support.node", 1 /* ITALIC */)
+        generate: getSimpleColorGenerator('Modules', 'support.module, support.node', 1 /* ITALIC */)
     },
     // support.type: `boolean` (ts)
     {
         color: function (s) { return s.syntax.type; },
-        generate: getSimpleColorGenerator("Type", "support.type")
+        generate: getSimpleColorGenerator('Type', 'support.type')
     },
     // entity.name.type: `: SomeType` (ts)
     {
         color: function (s) { return s.syntax.type; },
-        generate: getSimpleColorGenerator("Type", "entity.name.type, entity.other.inherited-class")
+        generate: getSimpleColorGenerator('Type', 'entity.name.type, entity.other.inherited-class')
     },
     {
         color: function (s) { return s.syntax.comment; },
-        generate: getSimpleColorGenerator("Comment", "comment", 1 /* ITALIC */)
+        generate: getSimpleColorGenerator('Comment', 'comment', 1 /* ITALIC */)
     },
     {
         color: function (s) { return s.syntax.class; },
-        generate: getSimpleColorGenerator("Class", "entity.name.type.class", 4 /* UNDERLINE */)
+        generate: getSimpleColorGenerator('Class', 'entity.name.type.class', 4 /* UNDERLINE */)
     },
     // variable.object.property: `class A { meth = 0; }` (ts)
     // meta.field.declaration entity.name.function: `class A { meth = () => 0; }` (ts)
     {
         color: function (s) { return s.syntax.classMember; },
-        generate: getSimpleColorGenerator("Class variable", "variable.object.property, meta.field.declaration entity.name.function")
+        generate: getSimpleColorGenerator('Class variable', 'variable.object.property, meta.field.declaration entity.name.function')
     },
     // meta.definition.method entity.name.function: `class A { meth() {} }` (ts)
     {
         color: function (s) { return s.syntax.classMember; },
-        generate: getSimpleColorGenerator("Class method", "meta.definition.method entity.name.function")
+        generate: getSimpleColorGenerator('Class method', 'meta.definition.method entity.name.function')
     },
     {
         color: function (s) { return s.syntax.function; },
-        generate: getSimpleColorGenerator("Function definition", "meta.function entity.name.function")
+        generate: getSimpleColorGenerator('Function definition', 'meta.function entity.name.function')
     },
     // punctuation.definition.template-expression: `${}`
     {
         color: function (s) { return s.syntax.keyword; },
-        generate: getSimpleColorGenerator("Template expression", "template.expression.begin, template.expression.end, punctuation.definition.template-expression.begin, punctuation.definition.template-expression.end")
+        generate: getSimpleColorGenerator('Template expression', 'template.expression.begin, template.expression.end, punctuation.definition.template-expression.begin, punctuation.definition.template-expression.end')
     },
     {
         color: function (s) { return s.base.foreground; },
-        generate: getSimpleColorGenerator("Reset embedded/template expression colors", "meta.embedded, source.groovy.embedded, meta.template.expression")
+        generate: getSimpleColorGenerator('Reset embedded/template expression colors', 'meta.embedded, source.groovy.embedded, meta.template.expression')
     },
     {
         color: function (s) { return s.syntax.identifier; },
-        generate: getSimpleColorGenerator("YAML key", "entity.name.tag.yaml")
+        generate: getSimpleColorGenerator('YAML key', 'entity.name.tag.yaml')
     },
     // modifier: This includes things like access modifiers, static, readonly, etc.
     {
         color: function (s) { return s.syntax.modifier; },
-        generate: getSimpleColorGenerator("Modifier", "modifier")
+        generate: getSimpleColorGenerator('Modifier', 'modifier')
     },
     /**
-     * JSON
-     */
+   * JSON
+   */
     {
         color: function (s) { return s.syntax.identifier; },
-        generate: getSimpleColorGenerator("JSON key", "meta.object-literal.key, meta.object-literal.key string, support.type.property-name.json")
+        generate: getSimpleColorGenerator('JSON key', 'meta.object-literal.key, meta.object-literal.key string, support.type.property-name.json')
     },
     {
         color: function (s) { return s.syntax.keyword; },
-        generate: getSimpleColorGenerator("JSON constant", "constant.language.json")
+        generate: getSimpleColorGenerator('JSON constant', 'constant.language.json')
     },
     /**
-     * CSS
-     */
+   * CSS
+   */
     {
         color: function (s) { return s.syntax.cssClass; },
-        generate: getSimpleColorGenerator("CSS class", "entity.other.attribute-name.class")
+        generate: getSimpleColorGenerator('CSS class', 'entity.other.attribute-name.class')
     },
     {
         color: function (s) { return s.syntax.cssId; },
-        generate: getSimpleColorGenerator("CSS ID", "entity.other.attribute-name.id")
+        generate: getSimpleColorGenerator('CSS ID', 'entity.other.attribute-name.id')
     },
     {
         color: function (s) { return s.syntax.cssTag; },
-        generate: getSimpleColorGenerator("CSS tag", "source.css entity.name.tag")
+        generate: getSimpleColorGenerator('CSS tag', 'source.css entity.name.tag')
     },
     /**
-     * HTML
-     */
+   * HTML
+   */
     {
         color: function (s) { return s.syntax.keyword; },
-        generate: getSimpleColorGenerator("HTML tag outer", "meta.tag, punctuation.definition.tag")
+        generate: getSimpleColorGenerator('HTML tag outer', 'meta.tag, punctuation.definition.tag')
     },
     {
         color: function (s) { return s.syntax.identifier; },
-        generate: getSimpleColorGenerator("HTML tag inner", "entity.name.tag")
+        generate: getSimpleColorGenerator('HTML tag inner', 'entity.name.tag')
     },
     {
         color: function (s) { return s.syntax.functionCall; },
-        generate: getSimpleColorGenerator("HTML tag attribute", "entity.other.attribute-name")
+        generate: getSimpleColorGenerator('HTML tag attribute', 'entity.other.attribute-name')
     },
     /**
-     * Markdown
-     */
+   * Markdown
+   */
     {
         color: function (s) { return s.syntax.keyword; },
-        generate: getSimpleColorGenerator("Markdown heading", "markup.heading")
+        generate: getSimpleColorGenerator('Markdown heading', 'markup.heading')
     },
     {
         color: function (s) { return s.syntax.identifier; },
-        generate: getSimpleColorGenerator("Markdown link text", "text.html.markdown meta.link.inline, meta.link.reference")
+        generate: getSimpleColorGenerator('Markdown link text', 'text.html.markdown meta.link.inline, meta.link.reference')
     },
     {
         color: function (s) { return s.syntax.markdownQuote; },
-        generate: getSimpleColorGenerator("Markdown block quote", "text.html.markdown markup.quote")
+        generate: getSimpleColorGenerator('Markdown block quote', 'text.html.markdown markup.quote')
     },
     {
         color: function (s) { return s.syntax.keyword; },
-        generate: getSimpleColorGenerator("Markdown list item", "text.html.markdown beginning.punctuation.definition.list")
+        generate: getSimpleColorGenerator('Markdown list item', 'text.html.markdown beginning.punctuation.definition.list')
     },
     {
         color: function (s) { return s.syntax.identifier; },
-        generate: getSimpleColorGenerator("Markdown italic", "markup.italic", 1 /* ITALIC */)
+        generate: getSimpleColorGenerator('Markdown italic', 'markup.italic', 1 /* ITALIC */)
     },
     {
         color: function (s) { return s.syntax.identifier; },
-        generate: getSimpleColorGenerator("Markdown bold", "markup.bold", 2 /* BOLD */)
+        generate: getSimpleColorGenerator('Markdown bold', 'markup.bold', 2 /* BOLD */)
     },
     {
         color: function (s) { return s.syntax.identifier; },
-        generate: getSimpleColorGenerator("Markdown bold italic", "markup.bold markup.italic, markup.italic markup.bold", 2 /* BOLD */ | 1 /* ITALIC */)
+        generate: getSimpleColorGenerator('Markdown bold italic', 'markup.bold markup.italic, markup.italic markup.bold', 2 /* BOLD */ | 1 /* ITALIC */)
     },
     {
         color: function (s) { return s.syntax.string; },
-        generate: getSimpleColorGenerator("Markdown code block", "markup.fenced_code.block.markdown punctuation.definition.markdown")
+        generate: getSimpleColorGenerator('Markdown code block', 'markup.fenced_code.block.markdown punctuation.definition.markdown')
     },
     {
         color: function (s) { return s.syntax.string; },
-        generate: getSimpleColorGenerator("Markdown inline code", "markup.inline.raw.string.markdown")
+        generate: getSimpleColorGenerator('Markdown inline code', 'markup.inline.raw.string.markdown')
     },
     /**
-     * Ini
-     */
+   * Ini
+   */
     {
         color: function (s) { return s.syntax.identifier; },
-        generate: getSimpleColorGenerator("INI property name", "keyword.other.definition.ini")
+        generate: getSimpleColorGenerator('INI property name', 'keyword.other.definition.ini')
     },
     {
         color: function (s) { return s.syntax.keyword; },
-        generate: getSimpleColorGenerator("INI section title", "entity.name.section.group-title.ini")
+        generate: getSimpleColorGenerator('INI section title', 'entity.name.section.group-title.ini')
     },
     /**
-     * C#
-     */
+   * C#
+   */
     {
         color: function (s) { return s.syntax.class; },
-        generate: getSimpleColorGenerator("C# class", "source.cs meta.class.identifier storage.type", 4 /* UNDERLINE */)
+        generate: getSimpleColorGenerator('C# class', 'source.cs meta.class.identifier storage.type', 4 /* UNDERLINE */)
     },
     {
         color: function (s) { return s.syntax.classMember; },
-        generate: getSimpleColorGenerator("C# class method", "source.cs meta.method.identifier entity.name.function")
+        generate: getSimpleColorGenerator('C# class method', 'source.cs meta.method.identifier entity.name.function')
     },
     {
         color: function (s) { return s.syntax.functionCall; },
-        generate: getSimpleColorGenerator("C# function call", "source.cs meta.method-call meta.method, source.cs entity.name.function")
+        generate: getSimpleColorGenerator('C# function call', 'source.cs meta.method-call meta.method, source.cs entity.name.function')
     },
     {
         color: function (s) { return s.syntax.type; },
-        generate: getSimpleColorGenerator("C# type", "source.cs storage.type")
+        generate: getSimpleColorGenerator('C# type', 'source.cs storage.type')
     },
     {
         color: function (s) { return s.syntax.type; },
-        generate: getSimpleColorGenerator("C# return type", "source.cs meta.method.return-type")
+        generate: getSimpleColorGenerator('C# return type', 'source.cs meta.method.return-type')
     },
     {
         color: function (s) { return s.syntax.comment; },
-        generate: getSimpleColorGenerator("C# preprocessor", "source.cs meta.preprocessor")
+        generate: getSimpleColorGenerator('C# preprocessor', 'source.cs meta.preprocessor')
     },
     {
         color: function (s) { return s.base.foreground; },
-        generate: getSimpleColorGenerator("C# namespace", "source.cs entity.name.type.namespace")
+        generate: getSimpleColorGenerator('C# namespace', 'source.cs entity.name.type.namespace')
     } // Override generic entity.name.type rule
 ];

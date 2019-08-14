@@ -86,11 +86,23 @@ const colorSet: IColorSet = {
     blue: colors.blue,
     brightBlue: colors.blueLight
   },
-  overrides: {
+  workbench: {
     'editorGutter.modifiedBackground': colors.green,
     'editorGutter.addedBackground': colors.blue,
     'editorGutter.deletedBackground': colors.red
-  }
+  },
+  customTokens: [
+		{
+			name: 'String',
+			scope: [
+				'string',
+			],
+			settings: {
+				fontStyle: 'normal',
+				foreground: '#00ff00'
+			}
+		}
+	]
 };
 
 generateTheme('My Theme', colorSet, path.join(__dirname, 'theme.json'));
