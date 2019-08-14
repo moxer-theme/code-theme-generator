@@ -1,5 +1,5 @@
-import { IColorSet, IThemeGenerator } from './interfaces';
-import { IVscodeJsonThemeSetting } from './rules';
+import { IColorSet, IThemeGenerator } from "./interfaces";
+import { IVscodeJsonThemeSetting } from "./rules";
 export interface IVscodeJsonTheme {
     name?: string;
     settings?: IVscodeJsonThemeSetting[];

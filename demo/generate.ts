@@ -94,7 +94,7 @@ const sapphireColorSet: IColorSet = {
       ],
       settings: {
         fontStyle: "normal",
-        foreground: "#ff00ff"
+        foreground: "#00ff00"
       }
     }
   ]
