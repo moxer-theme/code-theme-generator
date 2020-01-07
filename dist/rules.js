@@ -134,7 +134,7 @@ exports.tokenRules = [
     },
     {
         color: function (s) { return s.syntax.punctuation; },
-        generate: getSimpleColorGenerator('Punctuation', 'punctuation.accessor, punctuation.separator, punctuation.definition')
+        generate: getSimpleColorGenerator('Punctuation', 'punctuation.accessor, punctuation.separator')
     },
     {
         color: function (s) { return s.base.foreground; },
