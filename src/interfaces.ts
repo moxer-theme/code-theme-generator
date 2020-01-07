@@ -22,7 +22,7 @@ export interface IColorSet {
 		boolean?: string;
 		function?: string;
 		functionCall?: string;
-		variable?: string;
+		identifier?: string;
 		keyword?: string;
 		number?: string;
 		storage?: string;
@@ -38,6 +38,7 @@ export interface IColorSet {
 		cssTag?: string;
 		markdownQuote?: string;
 		punctuation?: string;
+		variable?: string;
 		otherKeyword?: string;
 	};
 	ui?: {

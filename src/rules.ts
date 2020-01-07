@@ -101,7 +101,7 @@ export const tokenRules: IRuleGenerator[] = [
       'Variable',
 			'variable, variable.parameter, support.variable, support.constant, meta.definition.variable entity.name.function'
 		)
-	},
+  },
   {
 		color: (s) => s.syntax.otherKeyword,
 		generate: getSimpleColorGenerator('Other Keyword', 'keyword.other')
