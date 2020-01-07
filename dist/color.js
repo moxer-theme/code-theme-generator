@@ -75,7 +75,9 @@ function generateFallbackColorSet(s, type) {
             cssClass: s.color1,
             cssId: s.color2,
             cssTag: s.color3,
-            markdownQuote: null
+            markdownQuote: null,
+            variable: s.foreground,
+            otherKeyword: null
         },
         ui: {
             cursor: null,
