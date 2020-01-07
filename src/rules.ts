@@ -98,7 +98,8 @@ export const tokenRules: IRuleGenerator[] = [
 	{
 		color: (s) => s.syntax.identifier,
 		generate: getSimpleColorGenerator(
-			'Identifier',
+      'Identifier',
+
 			'variable, variable.parameter, support.variable, support.constant, meta.definition.variable entity.name.function'
 		)
 	},
@@ -233,7 +234,7 @@ export const tokenRules: IRuleGenerator[] = [
 		generate: getSimpleColorGenerator('HTML tag inner', 'entity.name.tag')
 	},
 	{
-		color: (s) => s.syntax.functionCall,
+		color: (s) => s.syntax.storage,
 		generate: getSimpleColorGenerator('HTML tag attribute', 'entity.other.attribute-name')
 	},
 	/**
