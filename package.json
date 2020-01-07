@@ -1,6 +1,6 @@
 {
   "name": "@moxer/vscode-theme-generator",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Easily generate themes for VS Code",
   "main": "dist/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "build": "tsc",
     "prestart": "tsc demo/generate.ts",
     "start": "node demo/generate.js",
-    "prepublish": "npm run build",
+    "prepublishOnly": "npm run build",
     "lint": "tslint src/*.ts"
   },
   "author": "Mattia Astorino",
