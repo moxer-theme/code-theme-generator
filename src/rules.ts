@@ -177,7 +177,7 @@ export const tokenRules: IRuleGenerator[] = [
 	{
 		color: (s) => s.syntax.punctuation,
 		generate: getSimpleColorGenerator(
-			'Punctuation', 'punctuation.accessor, punctuation.separator, punctuation.definition'
+			'Punctuation', 'punctuation.accessor, punctuation.separator'
 		)
 	},
 	{
