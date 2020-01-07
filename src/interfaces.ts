@@ -37,6 +37,7 @@ export interface IColorSet {
 		cssId?: string;
 		cssTag?: string;
 		markdownQuote?: string;
+		punctuation?: string;
 	};
 	ui?: {
 		/** The color of the editor cursor/caret */

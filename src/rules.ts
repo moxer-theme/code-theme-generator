@@ -99,7 +99,7 @@ export const tokenRules: IRuleGenerator[] = [
 		color: (s) => s.syntax.identifier,
 		generate: getSimpleColorGenerator(
 			'Identifier',
-			'variable, support.variable, support.class, support.constant, meta.definition.variable entity.name.function'
+			'variable, variable.parameter, support.variable, support.constant, meta.definition.variable entity.name.function'
 		)
 	},
 	// support.type.object: module.exports (ts)
@@ -142,7 +142,7 @@ export const tokenRules: IRuleGenerator[] = [
 	},
 	{
 		color: (s) => s.syntax.class,
-		generate: getSimpleColorGenerator('Class', 'entity.name.type.class', FontStyle.UNDERLINE)
+		generate: getSimpleColorGenerator('Class', 'entity.name, entity.name.type.class, support.type, support.class, support.orther.namespace, meta.use', FontStyle.NONE)
 	},
 	// variable.object.property: `class A { meth = 0; }` (ts)
 	// meta.field.declaration entity.name.function: `class A { meth = () => 0; }` (ts)
@@ -168,6 +168,12 @@ export const tokenRules: IRuleGenerator[] = [
 		generate: getSimpleColorGenerator(
 			'Template expression',
 			'template.expression.begin, template.expression.end, punctuation.definition.template-expression.begin, punctuation.definition.template-expression.end'
+		)
+	},
+	{
+		color: (s) => s.syntax.punctuation,
+		generate: getSimpleColorGenerator(
+			'Punctuation', 'punctuation.accessor, punctuation.separator, punctuation.definition'
 		)
 	},
 	{
@@ -298,7 +304,7 @@ export const tokenRules: IRuleGenerator[] = [
    */
 	{
 		color: (s) => s.syntax.class,
-		generate: getSimpleColorGenerator('C# class', 'source.cs meta.class.identifier storage.type', FontStyle.UNDERLINE)
+		generate: getSimpleColorGenerator('C# class', 'source.cs meta.class.identifier storage.type', FontStyle.NONE)
 	},
 	{
 		color: (s) => s.syntax.classMember,
