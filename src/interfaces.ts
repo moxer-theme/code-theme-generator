@@ -22,7 +22,7 @@ export interface IColorSet {
 		boolean?: string;
 		function?: string;
 		functionCall?: string;
-		identifier?: string;
+		variable?: string;
 		keyword?: string;
 		number?: string;
 		storage?: string;
@@ -38,6 +38,7 @@ export interface IColorSet {
 		cssTag?: string;
 		markdownQuote?: string;
 		punctuation?: string;
+		otherKeyword?: string;
 	};
 	ui?: {
 		/** The color of the editor cursor/caret */

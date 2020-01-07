@@ -96,12 +96,15 @@ export const tokenRules: IRuleGenerator[] = [
 		generate: getSimpleColorGenerator('Number', 'constant.numeric')
 	},
 	{
-		color: (s) => s.syntax.identifier,
+		color: (s) => s.syntax.variable,
 		generate: getSimpleColorGenerator(
-      'Identifier',
-
+      'Variable',
 			'variable, variable.parameter, support.variable, support.constant, meta.definition.variable entity.name.function'
 		)
+	},
+  {
+		color: (s) => s.syntax.otherKeyword,
+		generate: getSimpleColorGenerator('Other Keyword', 'keyword.other')
 	},
 	// support.type.object: module.exports (ts)
 	{
