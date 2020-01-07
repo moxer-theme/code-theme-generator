@@ -66,8 +66,12 @@ exports.tokenRules = [
         generate: getSimpleColorGenerator('Number', 'constant.numeric')
     },
     {
-        color: function (s) { return s.syntax.identifier; },
-        generate: getSimpleColorGenerator('Identifier', 'variable, variable.parameter, support.variable, support.constant, meta.definition.variable entity.name.function')
+        color: function (s) { return s.syntax.variable; },
+        generate: getSimpleColorGenerator('Variable', 'variable, variable.parameter, support.variable, support.constant, meta.definition.variable entity.name.function')
+    },
+    {
+        color: function (s) { return s.syntax.otherKeyword; },
+        generate: getSimpleColorGenerator('Other Keyword', 'keyword.other')
     },
     // support.type.object: module.exports (ts)
     {
@@ -183,7 +187,7 @@ exports.tokenRules = [
         generate: getSimpleColorGenerator('HTML tag inner', 'entity.name.tag')
     },
     {
-        color: function (s) { return s.syntax.functionCall; },
+        color: function (s) { return s.syntax.storage; },
         generate: getSimpleColorGenerator('HTML tag attribute', 'entity.other.attribute-name')
     },
     /**
