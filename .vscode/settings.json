@@ -10,6 +10,9 @@
     "**/*.js.map": true
   },
   "editor.formatOnSave": false,
+  "markdownlint.config": {
+    "MD033": false
+  },
   "eslint.enable": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
