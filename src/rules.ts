@@ -347,6 +347,6 @@ export const tokenRules: IRuleGenerator[] = [
    */
   {
     color: s => s.base.foreground,
-    generate: getSimpleColorGenerator('JSX Text', 'source.js.jsx meta.jsx.children', FontStyle.NONE)
+    generate: getSimpleColorGenerator('JSX Text', 'source.js.jsx meta.jsx.children, source.js JSXNested', FontStyle.NONE)
   } // Normalize children text inside components/html elements
 ];
