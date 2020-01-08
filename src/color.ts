@@ -81,7 +81,8 @@ export function generateFallbackColorSet(s: IBaseColorSet, type: 'light' | 'dark
       cssTag: s.color3,
       markdownQuote: null,
       variable: s.foreground,
-      otherKeyword: null
+      otherKeyword: null,
+      punctuation: s.color3
     },
     ui: {
       cursor: null,

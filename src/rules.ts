@@ -341,5 +341,12 @@ export const tokenRules: IRuleGenerator[] = [
   {
     color: s => s.base.foreground,
     generate: getSimpleColorGenerator('C# namespace', 'source.cs entity.name.type.namespace')
-  } // Override generic entity.name.type rule
+  }, // Override generic entity.name.type rule
+  /**
+   * JSX
+   */
+  {
+    color: s => s.base.foreground,
+    generate: getSimpleColorGenerator('JSX Text', 'source.js.jsx meta.jsx.children', FontStyle.NONE)
+  } // Normalize children text inside components/html elements
 ];
