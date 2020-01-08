@@ -53,6 +53,10 @@ exports.tokenRules = [
         generate: getSimpleColorGenerator('String', 'string')
     },
     {
+        color: s => s.syntax.punctuation,
+        generate: getSimpleColorGenerator('Punctuation', 'punctuation, punctuation.definition.string')
+    },
+    {
         color: s => s.syntax.stringEscape,
         generate: getSimpleColorGenerator('String Escape', 'constant.character.escape, text.html constant.character.entity.named, punctuation.definition.entity.html')
     },
@@ -133,7 +137,7 @@ exports.tokenRules = [
     },
     {
         color: s => s.syntax.punctuation,
-        generate: getSimpleColorGenerator('Punctuation', 'punctuation')
+        generate: getSimpleColorGenerator('Punctuation', 'punctuation.accessor, punctuation.separator, punctuation.definition')
     },
     {
         color: s => s.base.foreground,
