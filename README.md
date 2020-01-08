@@ -1,16 +1,14 @@
-# vscode-theme-generator
-
-[![Build Status](https://travis-ci.org/Tyriar/vscode-theme-generator.svg?branch=master)](https://travis-ci.org/Tyriar/vscode-theme-generator)
+# Visual Studio Code Theme Generator
 
 This is a preview that leverages the new VS Code theming options in v1.12.
 
-**The Problem**
+## The Problem
 
 - New themes are typically forked from other themes, carrying the bugs with them
 - .tmThemes are overly verbose and difficult to maintain
 - Themes are difficult to write from scratch
 
-**The Solution**
+## The Solution
 
 What if all you needed to do to generate a theme was specify a few colors and everything else was handled for you? Well that's what this module aims to accomplish. All you need to do is specify a set of "base colors" (background, foreground and 4 accent colors) and you have a reasonably good looking theme.
 
@@ -39,24 +37,18 @@ generateTheme('My Theme', colorSet, path.join(__dirname, 'theme.json'));
 
 ## Getting started
 
-There's a [quick start repository](https://github.com/Tyriar/vscode-theme-generator-quick-start) that allows you to get started quickly, just clone and run!
-
 ```bash
-git clone https://github.com/Tyriar/vscode-theme-generator-quick-start
-cd vscode-theme-generator-quick-start
-npm install
+yarn add @moxer/vscode-theme-generator
 ```
 
-Make your changes to the colors in index.ts and hit F5 to build the theme and launch a new VS Code window with your theme available in the command palette (`ctrl`/`cmd+shift+p` > "Color Theme").
-
-## Advanced use
+Then import the generator and call it to generate a theme
 
 In addition to the `base` colors, `IColorSet` provides more options for `syntax`, `ui`, and `terminal`. There is also an `overrides` property, which allows you to set any color key from the [Theme Color Reference](https://code.visualstudio.com/docs/getstarted/theme-color-reference) directly.
 
 Since the theme is defined in TypeScript, you can create an object to give names to colors you want to re-use.
 
 ```ts
-import { generateTheme, IColorSet } from 'vscode-theme-generator';
+import { generateTheme, IColorSet } from '@moxer/vscode-theme-generator';
 
 const colors = {
   red: '#DA6771',
@@ -68,13 +60,23 @@ const colors = {
 
 const colorSet: IColorSet = {
   base: {
+    // Determines the overall background color
     background: '#12171F',
+    // Determines the overall text foreground color
     foreground: '#EFEFEF',
+    // Determines boolean, identifier, keyword, storage, and cssClass
     color1: colors.blue,
+    // Determines string, stringEscape, and cssId
     color2: colors.red,
+    // Determines function, class, classMember, type, and cssTag
     color3: colors.green,
+    // Determines functionCall and number
     color4: colors.yellow
   },
+  /**
+    * Overrides specific syntax groups provided
+    * by the theme generator (see above comment lines)
+    */
   syntax: {
     identifier: colors.blueLight,
     string: colors.red
@@ -92,17 +94,17 @@ const colorSet: IColorSet = {
     'editorGutter.deletedBackground': colors.red
   },
   customTokens: [
-		{
-			name: 'String',
-			scope: [
-				'string',
-			],
-			settings: {
-				fontStyle: 'normal',
-				foreground: '#00ff00'
-			}
-		}
-	]
+    {
+      name: 'String',
+      scope: [
+        'string',
+      ],
+      settings: {
+        fontStyle: 'normal',
+        foreground: '#00ff00'
+      }
+    }
+  ]
 };
 
 generateTheme('My Theme', colorSet, path.join(__dirname, 'theme.json'));
@@ -147,17 +149,6 @@ Support below means that the standard VS Code grammar has explicit support for t
 - :white_check_mark: JavaScript
 - :white_check_mark: Markdown
 - :white_check_mark: TypeScript
-
-## Roadmap
-
-Below are several of the bigger planned items, community feedback is welcome :smiley:
-
-- Support light themes [#22](https://github.com/Tyriar/vscode-theme-generator/issues/22)
-- Allow styling of text style [#16](https://github.com/Tyriar/vscode-theme-generator/issues/16)
-- Finalize and commit to API [#28](https://github.com/Tyriar/vscode-theme-generator/issues/28)
-- Implement syntax color fallbacks [#27](https://github.com/Tyriar/vscode-theme-generator/issues/27)
-- Refine background fallback values [#29](https://github.com/Tyriar/vscode-theme-generator/issues/29)
-- Add API documentation [#30](https://github.com/Tyriar/vscode-theme-generator/issues/30)
 
 ## Development
 
