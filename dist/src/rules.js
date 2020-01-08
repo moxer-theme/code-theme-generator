@@ -133,7 +133,7 @@ exports.tokenRules = [
     },
     {
         color: s => s.syntax.punctuation,
-        generate: getSimpleColorGenerator('Punctuation', 'punctuation.accessor, punctuation.separator, punctuation.definition')
+        generate: getSimpleColorGenerator('Punctuation', 'punctuation')
     },
     {
         color: s => s.base.foreground,
