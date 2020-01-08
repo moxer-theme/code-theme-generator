@@ -1,11 +1,11 @@
-import { IColorSet, IBaseColorSet } from './interfaces';
+import {IColorSet, IBaseColorSet} from './interfaces';
 
 function getRgb(color: string): [number, number, number] {
   return [
     parseInt(color.substr(1, 2), 16),
     parseInt(color.substr(3, 2), 16),
     parseInt(color.substr(5, 2), 16)
-  ]
+  ];
 }
 
 function toCssString(rgb: [number, number, number]): string {
@@ -35,16 +35,18 @@ export function addAlpha(color: string, alpha: number): string {
   if (color.length !== 7) {
     throw new Error('addAlpha only supports adding to #rrggbb format colors');
   }
+
   let alphaHex = Math.round(alpha * 255).toString(16);
   if (alphaHex.length === 1) {
     alphaHex = '0' + alphaHex;
   }
+
   return color + alphaHex;
 }
 
 export function contast(color: string): string {
   const rgb = getRgb(color);
-  const luminance = rgb[0] * 0.299 + rgb[1] * 0.587 + rgb[2] * 0.114;
+  const luminance = (rgb[0] * 0.299) + (rgb[1] * 0.587) + (rgb[2] * 0.114);
   return luminance > 192 ? '#000000' : '#ffffff';
 }
 

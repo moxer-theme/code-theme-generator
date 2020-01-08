@@ -9,7 +9,7 @@
     "prestart": "tsc demo/generate.ts",
     "start": "node demo/generate.js",
     "prepublishOnly": "npm run build",
-    "lint": "tslint src/*.ts"
+    "lint": "eslint ./src/*"
   },
   "author": "Mattia Astorino",
   "license": "MIT",
