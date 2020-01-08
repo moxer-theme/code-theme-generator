@@ -147,7 +147,7 @@ export const tokenRules: IRuleGenerator[] = [
   },
   {
     color: s => s.syntax.comment,
-    generate: getSimpleColorGenerator('Comment', 'comment', FontStyle.ITALIC)
+    generate: getSimpleColorGenerator('Comment', 'comment, punctuation.definition.comment', FontStyle.ITALIC)
   },
   {
     color: s => s.syntax.class,
@@ -182,7 +182,7 @@ export const tokenRules: IRuleGenerator[] = [
   {
     color: s => s.syntax.punctuation,
     generate: getSimpleColorGenerator(
-      'Punctuation', 'punctuation.accessor, punctuation.separator'
+      'Punctuation', 'punctuation.accessor, punctuation.separator, punctuation.definition'
     )
   },
   {
