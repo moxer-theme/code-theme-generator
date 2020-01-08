@@ -8,17 +8,17 @@ function getRgb(color) {
     ];
 }
 function toCssString(rgb) {
-    var result = '#';
+    let result = '#';
     result += (rgb[0].toString(16).length === 1 ? '0' : '') + rgb[0].toString(16);
     result += (rgb[1].toString(16).length === 1 ? '0' : '') + rgb[1].toString(16);
     result += (rgb[2].toString(16).length === 1 ? '0' : '') + rgb[2].toString(16);
     return result;
 }
 function lighten(color, amount) {
-    var MAX = 255;
-    var r = parseInt(color.substr(1, 2), 16);
-    var g = parseInt(color.substr(3, 2), 16);
-    var b = parseInt(color.substr(5, 2), 16);
+    const MAX = 255;
+    let r = parseInt(color.substr(1, 2), 16);
+    let g = parseInt(color.substr(3, 2), 16);
+    let b = parseInt(color.substr(5, 2), 16);
     r = Math.min(Math.floor(r + (r * amount)), MAX);
     g = Math.min(Math.floor(g + (g * amount)), MAX);
     b = Math.min(Math.floor(b + (b * amount)), MAX);
@@ -33,7 +33,7 @@ function addAlpha(color, alpha) {
     if (color.length !== 7) {
         throw new Error('addAlpha only supports adding to #rrggbb format colors');
     }
-    var alphaHex = Math.round(alpha * 255).toString(16);
+    let alphaHex = Math.round(alpha * 255).toString(16);
     if (alphaHex.length === 1) {
         alphaHex = '0' + alphaHex;
     }
@@ -41,14 +41,14 @@ function addAlpha(color, alpha) {
 }
 exports.addAlpha = addAlpha;
 function contast(color) {
-    var rgb = getRgb(color);
-    var luminance = rgb[0] * 0.299 + rgb[1] * 0.587 + rgb[2] * 0.114;
+    const rgb = getRgb(color);
+    const luminance = (rgb[0] * 0.299) + (rgb[1] * 0.587) + (rgb[2] * 0.114);
     return luminance > 192 ? '#000000' : '#ffffff';
 }
 exports.contast = contast;
 function generateFallbackColorSet(s, type) {
     return {
-        type: type,
+        type,
         base: {
             background: null,
             foreground: null,
@@ -77,7 +77,8 @@ function generateFallbackColorSet(s, type) {
             cssTag: s.color3,
             markdownQuote: null,
             variable: s.foreground,
-            otherKeyword: null
+            otherKeyword: null,
+            punctuation: s.color3
         },
         ui: {
             cursor: null,
@@ -115,3 +116,4 @@ function generateFallbackColorSet(s, type) {
     };
 }
 exports.generateFallbackColorSet = generateFallbackColorSet;
+//# sourceMappingURL=color.js.map
