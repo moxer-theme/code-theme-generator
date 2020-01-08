@@ -86,6 +86,12 @@ export const tokenRules: IRuleGenerator[] = [
     generate: getSimpleColorGenerator('String', 'string')
   },
   {
+    color: s => s.syntax.punctuation,
+    generate: getSimpleColorGenerator(
+      'Punctuation', 'punctuation, punctuation.definition.string'
+    )
+  },
+  {
     color: s => s.syntax.stringEscape,
     generate: getSimpleColorGenerator(
       'String Escape',

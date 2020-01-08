@@ -18,6 +18,7 @@
   "include": [
     "./types",
     "./src/**/*",
+    "./demo/**/*",
     "./test/**/*",
     "./scripts/**/*"
   ],
@@ -26,8 +27,5 @@
     "dist",
     "build",
     ".vscode-test"
-  ],
-  "files": [
-    "src/index.ts"
   ]
 }

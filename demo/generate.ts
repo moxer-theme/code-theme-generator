@@ -4,7 +4,7 @@ import {generateTheme, IColorSet} from '../dist';
 const sapphireColors = {
   red: '#DA6771',
   redLight: '#e5949b',
-  green: '#ffff00',
+  green: '#4EB071',
   greenDim: '#275839',
   yellow: '#fff099',
   blue: '#399EF4',
