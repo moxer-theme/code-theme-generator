@@ -22,6 +22,7 @@
   ],
   "typings": "dist/index",
   "devDependencies": {
+    "@types/fs-extra": "8.0.1",
     "@types/node": "^6.14.6",
     "@typescript-eslint/eslint-plugin": "2.15.0",
     "@typescript-eslint/parser": "2.15.0",
