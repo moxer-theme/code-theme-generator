@@ -1,7 +1,5 @@
 # Visual Studio Code Theme Generator
 
-This is a preview that leverages the new VS Code theming options in v1.12.
-
 ## The Problem
 
 - New themes are typically forked from other themes, carrying the bugs with them
