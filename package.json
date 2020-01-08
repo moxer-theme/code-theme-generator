@@ -64,7 +64,7 @@
     "resolve": "^1.11.1",
     "semver": "^5.7.0",
     "sprintf-js": "^1.0.3",
-    "supports-color": "^5.5.0",
+    "supports-color": "^7.1.0",
     "tslib": "^1.10.0",
     "tsutils": "^2.29.0",
     "wrappy": "^1.0.2"
