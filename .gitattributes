@@ -1,2 +1,2 @@
-src/**/*  filter=crypt diff=crypt
+src/**/*.ts  filter=crypt diff=crypt
 package.json  filter=crypt diff=crypt
