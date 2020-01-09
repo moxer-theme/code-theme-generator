@@ -4,6 +4,7 @@ package-lock.json
 
 demo/generate.js
 demo/*.json
+dist/
 
 
 # Created by https://www.gitignore.io/api/node,macos,windows
