@@ -1,33 +1,8 @@
-{
-  "name": "generated-theme",
-  "displayName": "Generated Theme",
-  "description": "...",
-  "categories": [ "Themes" ],
-  "version": "0.0.1",
-  "publisher": "vscode",
-  "engines": { "vscode": "*" },
-  "contributes": {
-    "themes": [
-      {
-        "label": "Generated Theme",
-        "uiTheme": "vs-dark",
-        "path": "./theme.json"
-      },
-      {
-        "label": "Generated Theme (Minimal, Dark)",
-        "uiTheme": "vs-dark",
-        "path": "./theme-minimal-dark.json"
-      },
-      {
-        "label": "Generated Theme (Minimal, Light)",
-        "uiTheme": "vs",
-        "path": "./theme-minimal-light.json"
-      },
-      {
-        "label": "Generated Theme (Minimal, coverage)",
-        "uiTheme": "vs-dark",
-        "path": "./theme-minimal-coverage.json"
-      }
-    ]
-  }
-}
+U2FsdGVkX183kN5lNJ1qngJ/jFh6PKzGQmFRbHHLawUheIvWNIOxAL+0dTh5apk2
+C0f78CuiYib4+StJNp8Y1yPMSykWH+8Igd0YZlQtodjYUXhK27gu+4sO8l6lpNd8
+2eYWpDUqN0qnMD8RnOuyaf1E1iL7dP2452F0r2ss79kin53tx0IIQOZ5zp7t6Q8b
+SCXuOCDiLRoSvnWFowVtRrxb/1wwRlyXqv3ndCJu4M9bWpdcA+yvQobhfZikRg6A
+tQE4h/yG7NgMDk3z9k7Qb8E3peDQdTMDz/uaPch1rMhrpApOvLviShrkJmHkP+Nj
+VAHU9WG6oob/9aJ4fEgk+02wz08BEL6iaLWiJ4KUIXjofaQFm5hlzjAWQdFQNewL
+gWqM/xrCd0f4Af1Q4TG1cEQR8X1Vl7f+wcM4g/T+Nq8zunllj8hAZRuz3bF+ofG9
+AUSPK6YkIKUFetciecKqJ+YFALhoKgwrZ8n+6cmyJHIkNBtZKVqHTFF8EMkd2sgX

@@ -26,9 +26,9 @@ const sapphireColorSet: IColorSet = {
   },
   syntax: {
     identifier: sapphireColors.blueLight,
-    string: sapphireColors.red,
+    string: sapphireColors.green,
     number: sapphireColors.redLight,
-    keyword: sapphireColors.blue,
+    keyword: sapphireColors.red,
     boolean: sapphireColors.blue,
     function: sapphireColors.teal,
     functionCall: sapphireColors.yellow,
@@ -40,7 +40,9 @@ const sapphireColorSet: IColorSet = {
     cssClass: sapphireColors.blue,
     cssId: sapphireColors.red,
     cssTag: sapphireColors.teal,
-    markdownQuote: '#c0c0c0'
+    markdownQuote: '#c0c0c0',
+    otherKeyword: sapphireColors.pink,
+    punctuation: sapphireColors.yellow
   },
   ui: {
     cursor: '#ffffff',
@@ -78,73 +80,8 @@ const sapphireColorSet: IColorSet = {
     brightWhite: '#efefef'
   },
   workbench: {
-    'editorError.foreground': '#ff0000'
-  },
-  customTokens: [
-    {
-      name: 'String, Symbols, Inherited Class, Markup Heading',
-      scope: [
-        'string',
-        'constant.other.symbol',
-        'constant.other.key',
-        'entity.other.inherited-class',
-        'markup.heading',
-        'markup.inserted.git_gutter',
-        'meta.group.braces.curly constant.other.object.key.js string.unquoted.label.js'
-      ],
-      settings: {
-        fontStyle: 'normal',
-        foreground: '#00ff00'
-      }
-    }
-  ]
-};
-
-const minimalDarkColorSet: IColorSet = {
-  type: 'dark',
-  base: {
-    background: '#22272f',
-    foreground: '#efefef',
-    color1: sapphireColors.blue,
-    color2: sapphireColors.red,
-    color3: sapphireColors.green,
-    color4: sapphireColors.yellow
   }
-};
-
-const minimalLightColorSet: IColorSet = {
-  type: 'light',
-  base: {
-    background: '#efefff',
-    foreground: '#000011',
-    color1: sapphireColors.blue,
-    color2: sapphireColors.red,
-    color3: sapphireColors.green,
-    color4: sapphireColors.yellow
-  }
-};
-
-const minimalCoverageColorSet: IColorSet = {
-  type: 'dark',
-  base: {
-    background: '#FF0000',
-    foreground: '#0000FF',
-    color1: '#00FF00',
-    color2: '#00FF00',
-    color3: '#00FF00',
-    color4: '#00FF00'
-  }
+  // CustomTokens: []
 };
 
 generateTheme('Generated Theme', sapphireColorSet, path.join(__dirname, 'theme.json'));
-generateTheme('Generated Theme (minimal, dark)', minimalDarkColorSet, path.join(__dirname, 'theme-minimal-dark.json'));
-generateTheme(
-  'Generated Theme (minimal, light)',
-  minimalLightColorSet,
-  path.join(__dirname, 'theme-minimal-light.json')
-);
-generateTheme(
-  'Generated Theme (minimal, coverage)',
-  minimalCoverageColorSet,
-  path.join(__dirname, 'theme-minimal-coverage.json')
-);
