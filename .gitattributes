@@ -1,2 +1,2 @@
-./src/**/*.ts  filter=crypt diff=crypt merge=crypt
-./package.json  filter=crypt diff=crypt merge=crypt
+src/vscodeThemeGenerator.ts  filter=crypt diff=crypt merge=crypt
+package.json  filter=crypt diff=crypt merge=crypt
