@@ -109,7 +109,7 @@ export const tokenRules: IRuleGenerator[] = [
     color: s => s.syntax.variable,
     generate: getSimpleColorGenerator(
       'Variable',
-      'variable, variable.parameter, support.variable, support.constant, meta.function-call variable.language, meta.definition.variable entity.name.function, meta.function-call.arguments'
+      'variable, variable.parameter, support.variable, support.constant, meta.definition.variable entity.name.function, meta.function-call.arguments'
     )
   },
   {
@@ -375,5 +375,9 @@ export const tokenRules: IRuleGenerator[] = [
   {
     color: s => s.syntax.functionCall,
     generate: getSimpleColorGenerator('Function Call', 'source.python meta.function-call.python', FontStyle.NONE)
+  }, // Normalize children text inside components/html elements
+  {
+    color: s => s.syntax.keyword,
+    generate: getSimpleColorGenerator('Function Call', 'source.python meta.function-call variable.language', FontStyle.NONE)
   } // Normalize children text inside components/html elements
 ];
