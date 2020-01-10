@@ -358,26 +358,30 @@ export const tokenRules: IRuleGenerator[] = [
     color: s => s.base.foreground,
     generate: getSimpleColorGenerator('JSX Text', 'meta.jsx.children, source.js JSXNested', FontStyle.NONE)
   }, // Normalize children text inside components/html elements
+  {
+    color: s => s.syntax.cssTag,
+    generate: getSimpleColorGenerator('JSX Components name', 'source.js support.class.component', FontStyle.NONE)
+  }, // Normalize components name
   /**
    * C++
    */
   {
     color: s => s.base.foreground,
     generate: getSimpleColorGenerator('C-related Block Level Variables', 'source.cpp meta.block variable.other', FontStyle.NONE)
-  }, // Normalize children text inside components/html elements
+  },
   /**
    * PYTHON
    */
   {
-    color: s => s.base.color1,
+    color: s => s.syntax.identifier,
     generate: getSimpleColorGenerator('Member Access Meta', 'source.python meta.member.access.python', FontStyle.NONE)
-  }, // Normalize children text inside components/html elements
+  },
   {
     color: s => s.syntax.functionCall,
     generate: getSimpleColorGenerator('Function Call', 'source.python meta.function-call.python', FontStyle.NONE)
-  }, // Normalize children text inside components/html elements
+  },
   {
     color: s => s.syntax.keyword,
     generate: getSimpleColorGenerator('Function Call', 'source.python meta.function-call variable.language', FontStyle.NONE)
-  } // Normalize children text inside components/html elements
+  }
 ];

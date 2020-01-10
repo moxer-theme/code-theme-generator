@@ -1,6 +1,7 @@
 node_modules/
 typings/
 package-lock.json
+src/**/*.js
 
 demo/generate.js
 demo/*.json

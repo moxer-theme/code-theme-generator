@@ -71,7 +71,7 @@ exports.tokenRules = [
     },
     {
         color: function (s) { return s.syntax.variable; },
-        generate: getSimpleColorGenerator('Variable', 'variable, variable.parameter, support.variable, support.constant, meta.function-call variable.language, meta.definition.variable entity.name.function, meta.function-call.arguments')
+        generate: getSimpleColorGenerator('Variable', 'variable, variable.parameter, support.variable, support.constant, meta.definition.variable entity.name.function, meta.function-call.arguments')
     },
     {
         color: function (s) { return s.syntax.otherKeyword; },
@@ -286,6 +286,10 @@ exports.tokenRules = [
         color: function (s) { return s.base.foreground; },
         generate: getSimpleColorGenerator('JSX Text', 'meta.jsx.children, source.js JSXNested', 0 /* NONE */)
     },
+    {
+        color: function (s) { return s.syntax.cssTag; },
+        generate: getSimpleColorGenerator('JSX Components name', 'source.js support.class.component', 0 /* NONE */)
+    },
     /**
      * C++
      */
@@ -297,11 +301,15 @@ exports.tokenRules = [
      * PYTHON
      */
     {
-        color: function (s) { return s.base.color1; },
+        color: function (s) { return s.syntax.identifier; },
         generate: getSimpleColorGenerator('Member Access Meta', 'source.python meta.member.access.python', 0 /* NONE */)
     },
     {
         color: function (s) { return s.syntax.functionCall; },
         generate: getSimpleColorGenerator('Function Call', 'source.python meta.function-call.python', 0 /* NONE */)
-    } // Normalize children text inside components/html elements
+    },
+    {
+        color: function (s) { return s.syntax.keyword; },
+        generate: getSimpleColorGenerator('Function Call', 'source.python meta.function-call variable.language', 0 /* NONE */)
+    }
 ];
