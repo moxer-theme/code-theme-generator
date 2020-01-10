@@ -17,8 +17,8 @@
     "definition": "index.d.ts"
   },
   "files": [
-    "dist/src/*.js",
-    "dist/src/*.d.ts"
+    "dist/**/*.js",
+    "dist/**/*.d.ts"
   ],
   "types": "dist/index",
   "devDependencies": {
