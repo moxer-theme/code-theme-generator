@@ -71,7 +71,7 @@ exports.tokenRules = [
     },
     {
         color: function (s) { return s.syntax.variable; },
-        generate: getSimpleColorGenerator('Variable', 'variable, variable.parameter, support.variable, support.constant, meta.definition.variable entity.name.function')
+        generate: getSimpleColorGenerator('Variable', 'variable, variable.parameter, support.variable, support.constant, meta.function-call variable.language, meta.definition.variable entity.name.function, meta.function-call.arguments')
     },
     {
         color: function (s) { return s.syntax.otherKeyword; },
