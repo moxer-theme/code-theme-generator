@@ -16,8 +16,7 @@
     "resolveJsonModule": true
   },
   "include": [
-    "./src/**/*",
-    "./demo/**/*"
+    "src/**/*"
   ],
   "exclude": [
     "node_modules",
