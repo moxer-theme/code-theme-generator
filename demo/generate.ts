@@ -1,5 +1,6 @@
 import * as path from 'path';
-import {generateTheme, IColorSet} from '../dist';
+import {generateTheme} from '../src';
+import {IColorSet} from '../src';
 
 const sapphireColors = {
   red: '#DA6771',
