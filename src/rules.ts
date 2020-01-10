@@ -1,387 +1,240 @@
-import {IColorSet} from './interfaces';
-export interface IVscodeJsonThemeSetting {
-  name: string;
-  scope: string | string[];
-  settings: {
-    foreground?: string;
-    background?: string;
-    fontStyle?: string;
-  };
-}
-
-export type ColorFetcher = (colorSet: IColorSet) => string;
-export type ColorGenerator = (color: string) => any;
-
-export interface IRuleGenerator {
-  color: ColorFetcher;
-  generate: ColorGenerator;
-}
-
-const enum FontStyle {
-  NONE = 0,
-  ITALIC = 1 << 0,
-  BOLD = 1 << 1,
-  UNDERLINE = 1 << 2
-}
-
-function getGlobalSettingGenerator(name: string): ColorGenerator {
-  return (color: string) => {
-    if (!color) {
-      return undefined;
-    }
-
-    const result: any = {};
-    result[name] = color;
-    return result;
-  };
-}
-
-function getSimpleColorGenerator(name: string, scope: string, fontStyle: number = FontStyle.NONE): ColorGenerator {
-  return (color: string) => {
-    let colorRule: IVscodeJsonThemeSetting = {
-      name: name,
-      scope: scope,
-      settings: {
-        foreground: color
-      }
-    };
-    let fontStyles: string[] = [];
-    if (fontStyle & FontStyle.ITALIC) {
-      fontStyles.push('italic');
-    }
-
-    if (fontStyle & FontStyle.BOLD) {
-      fontStyles.push('bold');
-    }
-
-    if (fontStyle & FontStyle.UNDERLINE) {
-      fontStyles.push('underline');
-    }
-
-    if (fontStyles.length > 0) {
-      colorRule.settings.fontStyle = fontStyles.join(' ');
-    }
-
-    return colorRule;
-  };
-}
-
-export const globalRules: IRuleGenerator[] = [
-  {
-    color: s => s.base.background,
-    generate: getGlobalSettingGenerator('background')
-  },
-  {
-    color: s => s.base.foreground,
-    generate: getGlobalSettingGenerator('foreground')
-  }
-];
-
-export const tokenRules: IRuleGenerator[] = [
-  // String: It's important that string is put first so that other scopes can override strings
-  // within template expressions
-  {
-    color: s => s.syntax.string,
-    generate: getSimpleColorGenerator('String', 'string')
-  },
-  {
-    color: s => s.syntax.punctuation,
-    generate: getSimpleColorGenerator(
-      'Punctuation', 'punctuation'
-    )
-  },
-  {
-    color: s => s.syntax.stringEscape,
-    generate: getSimpleColorGenerator(
-      'String Escape',
-      'constant.character.escape, text.html constant.character.entity.named, punctuation.definition.entity.html'
-    )
-  },
-  {
-    color: s => s.syntax.boolean,
-    generate: getSimpleColorGenerator('Boolean', 'constant.language.boolean')
-  },
-  {
-    color: s => s.syntax.number,
-    generate: getSimpleColorGenerator('Number', 'constant.numeric')
-  },
-  {
-    color: s => s.syntax.variable,
-    generate: getSimpleColorGenerator(
-      'Variable',
-      'variable, variable.parameter, support.variable, support.constant, meta.definition.variable entity.name.function, meta.function-call.arguments'
-    )
-  },
-  {
-    color: s => s.syntax.otherKeyword,
-    generate: getSimpleColorGenerator('Other Keyword', 'keyword.other')
-  },
-  // Support.type.object: module.exports (ts)
-  {
-    color: s => s.syntax.keyword,
-    generate: getSimpleColorGenerator(
-      'Keyword',
-      'keyword, modifier, variable.language.this, support.type.object, constant.language'
-    )
-  },
-  // Support.function: eg. join in path.join in TypeScript
-  {
-    color: s => s.syntax.functionCall,
-    generate: getSimpleColorGenerator('Function call', 'entity.name.function, support.function')
-  },
-  // Storage.type: var (ts)
-  // storage.modifier: private (ts)
-  {
-    color: s => s.syntax.storage,
-    generate: getSimpleColorGenerator('Storage', 'storage.type, storage.modifier')
-  },
-  // Module.support: imported modules in TypeScript
-  {
-    color: s => s.syntax.identifier,
-    generate: getSimpleColorGenerator('Modules', 'support.module, support.node', FontStyle.ITALIC)
-  },
-  // Support.type: `boolean` (ts)
-  {
-    color: s => s.syntax.type,
-    generate: getSimpleColorGenerator('Type', 'support.type, variable.parameter')
-  },
-  // Entity.name.type: `: SomeType` (ts)
-  {
-    color: s => s.syntax.type,
-    generate: getSimpleColorGenerator('Type', 'entity.name.type, entity.other.inherited-class')
-  },
-  {
-    color: s => s.syntax.comment,
-    generate: getSimpleColorGenerator('Comment', 'comment', FontStyle.ITALIC)
-  },
-  {
-    color: s => s.syntax.comment,
-    generate: getSimpleColorGenerator('Comment', 'comment punctuation.definition.comment', FontStyle.ITALIC)
-  },
-  {
-    color: s => s.syntax.punctuation,
-    generate: getSimpleColorGenerator(
-      'Punctuation', 'punctuation'
-    )
-  },
-  {
-    color: s => s.syntax.class,
-    generate: getSimpleColorGenerator('Class', 'entity.name, entity.name.type.class, support.type, support.class, support.orther.namespace, meta.use', FontStyle.NONE)
-  },
-  // Variable.object.property: `class A { meth = 0; }` (ts)
-  // meta.field.declaration entity.name.function: `class A { meth = () => 0; }` (ts)
-  {
-    color: s => s.syntax.classMember,
-    generate: getSimpleColorGenerator(
-      'Class variable',
-      'variable.object.property, meta.field.declaration entity.name.function'
-    )
-  },
-  // Meta.definition.method entity.name.function: `class A { meth() {} }` (ts)
-  {
-    color: s => s.syntax.classMember,
-    generate: getSimpleColorGenerator('Class method', 'meta.definition.method entity.name.function')
-  },
-  {
-    color: s => s.syntax.function,
-    generate: getSimpleColorGenerator('Function definition', 'meta.function entity.name.function')
-  },
-  // Punctuation.definition.template-expression: `${}`
-  {
-    color: s => s.syntax.keyword,
-    generate: getSimpleColorGenerator(
-      'Template expression',
-      'template.expression.begin, template.expression.end, punctuation.definition.template-expression.begin, punctuation.definition.template-expression.end'
-    )
-  },
-  {
-    color: s => s.base.foreground,
-    generate: getSimpleColorGenerator(
-      'Reset embedded/template expression colors',
-      'meta.embedded, source.groovy.embedded, meta.template.expression'
-    )
-  },
-  {
-    color: s => s.syntax.identifier,
-    generate: getSimpleColorGenerator('YAML key', 'entity.name.tag.yaml')
-  },
-  // Modifier: This includes things like access modifiers, static, readonly, etc.
-  {
-    color: s => s.syntax.modifier,
-    generate: getSimpleColorGenerator('Modifier', 'modifier')
-  },
-  /**
-   * JSON
-   */
-  {
-    color: s => s.syntax.identifier,
-    generate: getSimpleColorGenerator(
-      'JSON key',
-      'meta.object-literal.key, meta.object-literal.key string, support.type.property-name.json'
-    )
-  },
-  {
-    color: s => s.syntax.keyword,
-    generate: getSimpleColorGenerator('JSON constant', 'constant.language.json')
-  },
-  /**
-   * CSS
-   */
-  {
-    color: s => s.syntax.cssClass,
-    generate: getSimpleColorGenerator('CSS class', 'entity.other.attribute-name.class')
-  },
-  {
-    color: s => s.syntax.cssId,
-    generate: getSimpleColorGenerator('CSS ID', 'entity.other.attribute-name.id')
-  },
-  {
-    color: s => s.syntax.cssTag,
-    generate: getSimpleColorGenerator('CSS tag', 'source.css entity.name.tag')
-  },
-  /**
-   * HTML
-   */
-  {
-    color: s => s.syntax.keyword,
-    generate: getSimpleColorGenerator('HTML tag outer', 'meta.tag, punctuation.definition.tag')
-  },
-  {
-    color: s => s.syntax.identifier,
-    generate: getSimpleColorGenerator('HTML tag inner', 'entity.name.tag')
-  },
-  {
-    color: s => s.syntax.storage,
-    generate: getSimpleColorGenerator('HTML tag attribute', 'entity.other.attribute-name')
-  },
-  /**
-   * Markdown
-   */
-  {
-    color: s => s.syntax.keyword,
-    generate: getSimpleColorGenerator('Markdown heading', 'markup.heading')
-  },
-  {
-    color: s => s.syntax.identifier,
-    generate: getSimpleColorGenerator(
-      'Markdown link text',
-      'text.html.markdown meta.link.inline, meta.link.reference'
-    )
-  },
-  {
-    color: s => s.syntax.markdownQuote,
-    generate: getSimpleColorGenerator('Markdown block quote', 'text.html.markdown markup.quote')
-  },
-  {
-    color: s => s.syntax.keyword,
-    generate: getSimpleColorGenerator(
-      'Markdown list item',
-      'text.html.markdown beginning.punctuation.definition.list'
-    )
-  },
-  {
-    color: s => s.syntax.identifier,
-    generate: getSimpleColorGenerator('Markdown italic', 'markup.italic', FontStyle.ITALIC)
-  },
-  {
-    color: s => s.syntax.identifier,
-    generate: getSimpleColorGenerator('Markdown bold', 'markup.bold', FontStyle.BOLD)
-  },
-  {
-    color: s => s.syntax.identifier,
-    generate: getSimpleColorGenerator(
-      'Markdown bold italic',
-      'markup.bold markup.italic, markup.italic markup.bold',
-      FontStyle.BOLD | FontStyle.ITALIC
-    )
-  },
-  {
-    color: s => s.syntax.string,
-    generate: getSimpleColorGenerator(
-      'Markdown code block',
-      'markup.fenced_code.block.markdown punctuation.definition.markdown'
-    )
-  },
-  {
-    color: s => s.syntax.string,
-    generate: getSimpleColorGenerator('Markdown inline code', 'markup.inline.raw.string.markdown')
-  },
-  /**
-   * Ini
-   */
-  {
-    color: s => s.syntax.identifier,
-    generate: getSimpleColorGenerator('INI property name', 'keyword.other.definition.ini')
-  },
-  {
-    color: s => s.syntax.keyword,
-    generate: getSimpleColorGenerator('INI section title', 'entity.name.section.group-title.ini')
-  },
-  /**
-   * C#
-   */
-  {
-    color: s => s.syntax.class,
-    generate: getSimpleColorGenerator('C# class', 'source.cs meta.class.identifier storage.type', FontStyle.NONE)
-  },
-  {
-    color: s => s.syntax.classMember,
-    generate: getSimpleColorGenerator('C# class method', 'source.cs meta.method.identifier entity.name.function')
-  },
-  {
-    color: s => s.syntax.functionCall,
-    generate: getSimpleColorGenerator(
-      'C# function call',
-      'source.cs meta.method-call meta.method, source.cs entity.name.function'
-    )
-  },
-  {
-    color: s => s.syntax.type,
-    generate: getSimpleColorGenerator('C# type', 'source.cs storage.type')
-  },
-  {
-    color: s => s.syntax.type,
-    generate: getSimpleColorGenerator('C# return type', 'source.cs meta.method.return-type')
-  }, // Lambda function returns do not use storage.type scope
-  {
-    color: s => s.syntax.comment,
-    generate: getSimpleColorGenerator('C# preprocessor', 'source.cs meta.preprocessor')
-  },
-  {
-    color: s => s.base.foreground,
-    generate: getSimpleColorGenerator('C# namespace', 'source.cs entity.name.type.namespace')
-  }, // Override generic entity.name.type rule
-  /**
-   * JSX
-   */
-  {
-    color: s => s.base.foreground,
-    generate: getSimpleColorGenerator('JSX Text', 'meta.jsx.children, source.js JSXNested', FontStyle.NONE)
-  }, // Normalize children text inside components/html elements
-  {
-    color: s => s.syntax.cssTag,
-    generate: getSimpleColorGenerator('JSX Components name', 'source.js support.class.component', FontStyle.NONE)
-  }, // Normalize components name
-  /**
-   * C++
-   */
-  {
-    color: s => s.base.foreground,
-    generate: getSimpleColorGenerator('C-related Block Level Variables', 'source.cpp meta.block variable.other', FontStyle.NONE)
-  },
-  /**
-   * PYTHON
-   */
-  {
-    color: s => s.syntax.identifier,
-    generate: getSimpleColorGenerator('Member Access Meta', 'source.python meta.member.access.python', FontStyle.NONE)
-  },
-  {
-    color: s => s.syntax.functionCall,
-    generate: getSimpleColorGenerator('Function Call', 'source.python meta.function-call.python', FontStyle.NONE)
-  },
-  {
-    color: s => s.syntax.keyword,
-    generate: getSimpleColorGenerator('Function Call', 'source.python meta.function-call variable.language', FontStyle.NONE)
-  }
-];
+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
