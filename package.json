@@ -17,10 +17,10 @@
     "definition": "index.d.ts"
   },
   "files": [
-    "dist/*.js",
-    "dist/*.d.ts"
+    "dist/**/*.js",
+    "dist/**/*.d.ts"
   ],
-  "typings": "dist/index",
+  "types": "dist/index",
   "devDependencies": {
     "@types/node": "^6.14.6",
     "@typescript-eslint/eslint-plugin": "2.15.0",
