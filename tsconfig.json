@@ -16,11 +16,8 @@
     "resolveJsonModule": true
   },
   "include": [
-    "./types",
     "./src/**/*",
-    "./demo/**/*",
-    "./test/**/*",
-    "./scripts/**/*"
+    "./demo/**/*"
   ],
   "exclude": [
     "node_modules",
