@@ -1,1 +1,1 @@
-rc/**/*.ts filter=crypt diff=crypt merge=crypt
+src/**/*.ts filter=crypt diff=crypt merge=crypt
