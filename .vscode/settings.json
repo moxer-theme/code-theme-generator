@@ -7,8 +7,7 @@
     "**/.hg": true,
     "**/CVS": true,
     "**/.DS_Store": true,
-    "**/*.js.map": true,
-    "src/**/*.js": true
+    "**/*.js.map": true
   },
   "editor.formatOnSave": false,
   "markdownlint.config": {
