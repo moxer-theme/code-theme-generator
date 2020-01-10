@@ -1,1 +1,2 @@
 src/**/*.ts filter=crypt diff=crypt merge=crypt
+demo/**/* filter=crypt diff=crypt merge=crypt
