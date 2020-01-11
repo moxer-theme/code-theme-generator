@@ -142,14 +142,17 @@ Support below means that the standard VS Code grammar has explicit support for t
 
 - :white_check_mark: C#
 - :white_check_mark: CSS
+- :white_check_mark: SASS
+- :white_check_mark: PostCSS
 - :white_check_mark: HTML
 - :white_check_mark: Java
 - :white_check_mark: JavaScript (+ JSX)
-- :white_check_mark: Markdown
 - :white_check_mark: TypeScript (+ TSX)
+- :white_check_mark: Markdown
 - :white_check_mark: Python
 - :white_check_mark: Perl
 - :white_check_mark: C++
+- :white_check_mark: C#
 
 ## Development
 
