@@ -9,7 +9,7 @@ brew install transcrypt
 
 ### Unlock files
 
-TO unlock source files run this transcrypt command with data provided by repository owners (via `transcrypt --display`):
+To unlock source files run this transcrypt command with data provided by repository owners (via `transcrypt --display`):
 
 ```bash
 transcrypt -c <CIPHER> -p '<PASSWORD>'
