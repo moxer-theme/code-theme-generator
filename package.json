@@ -62,7 +62,7 @@
     "path-parse": "^1.0.6",
     "reflect-metadata": "^0.1.13",
     "resolve": "^1.11.1",
-    "semver": "^5.7.0",
+    "semver": "^7.5.2",
     "sprintf-js": "^1.0.3",
     "supports-color": "^7.1.0",
     "tslib": "^1.10.0",
